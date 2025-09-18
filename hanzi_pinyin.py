@@ -1,6 +1,7 @@
-import pandas as pd
+import polars as pl
+from read_cedict import read_cedict
 
-hanzi = pd.read_csv('hanziDB.csv')
+hanzi = read_cedict()
 
 text = """
 
@@ -55,9 +56,12 @@ text = """
 
 pinyin = ''
 for char in text:
-    pin = hanzi[hanzi['charcter'] == char]['pinyin']
-    if not pin.empty:
-        pinyin += pin.iloc[0] + ' '
+    trad = hanzi.filter(pl.col('traditional') == char).get_column('pinyin')
+    simpl = hanzi.filter(pl.col('simplified') == char).get_column('pinyin')
+    if simpl.shape[0] > 0:
+        pinyin += simpl[0].lower() + ' '
+    elif trad.shape[0] > 0:
+        pinyin += trad[0].lower() + ' '
     else:
         pinyin += char
 
