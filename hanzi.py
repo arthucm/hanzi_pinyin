@@ -37,6 +37,14 @@ def hanzi_to_pinyin(text:str, marks:bool=True):
             for char in priority[::-1]:
                 if word.find(char) != -1:
                     pref_vowel = char
+                    u = word.find('u')
+                    i = word.find('i')
+                    if u != -1 and i != -1:
+                        if i > u:
+                            pref_vowel = 'i'
+                        else:
+                            pref_vowel = 'u'
+
             if word[-1] == '5':
                 pinyin_tones += word[:-1]
             elif word[-1] == '4':
