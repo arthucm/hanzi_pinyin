@@ -5,7 +5,7 @@ def read_cedict(source:str='hanzi_pinyin/cedict_ts.u8'):
     extracted_data = []
     regex = re.compile(r'(.+?)\s+\[(.*?)\]\s+\/(.*?)\/')
 
-    with open(source) as file:
+    with open(source, 'r', encoding='utf-8') as file:
 
         for row in file:
             if row.startswith('#'):
