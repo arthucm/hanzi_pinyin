@@ -7,7 +7,12 @@ This project simply converts mandarin characters (hanzi) to pinyin.
 It is suitable if you want to practice reading, pronounciation or just being able to sing a chinese song.
 ___
 ## How to use
-To use it effectively, just import the hanzi_to_pinyin function from hanzi.py file and insert the desired text inside it, as shown in the trial.py file.
+First, you just need to install the polars library into you computer, if you don't already have it.
+In order to do it, run this snippet in your terminal: 
+
+`pip install polars`
+
+Then, to use it effectively, just import the hanzi_to_pinyin function from hanzi.py file and insert the desired text in it, as shown in the trial.py file.
 ___
 
 ## Attribution
